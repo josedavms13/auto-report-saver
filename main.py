@@ -9,8 +9,8 @@ report_directory = input("Paste here the absolute path of the last generated rep
 intellij_report_location = report_directory if report_directory else default_intellij_report_file
 intellij_report = Path(intellij_report_location)
 
-
-to_save_target_directory = input("Paste here the absolute path where you want to save generated reports: ")
+print("Paste here the absolute path where you want to save generated reports")
+to_save_target_directory = input("\tIf empty will create a report folder in project directory. Paste path here : ")
 to_save_target_location = to_save_target_directory if to_save_target_directory else default_target_directory
 to_save_target = Path(to_save_target_location)
 label = input("Type a label to name the report prefix: ")
@@ -18,7 +18,7 @@ label = input("Type a label to name the report prefix: ")
 
 fs = FilesUtils(label, intellij_report, to_save_target)
 message_count = 0
-
+print("Waiting for a new report...")
 while True:
     if intellij_report.exists():
         fs.move_report_and_rename(intellij_report)
